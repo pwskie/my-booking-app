@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<header class="hero">
+    <div class="container">
+        <h1>Tempat Booking Lapangan Olahraga Terlengkap</h1>
+        <p>Booking lapangan favorit Anda dengan mudah, cepat, dan transparan.</p>
+        <a href="#lapangan" class="btn-primary">Lihat Daftar Lapangan</a>
+    </div>
+</header>
+
+<main class="container" id="lapangan">
+    <h2 style="text-align: center; margin-bottom: 30px;">Pilih Lapangan untuk Booking</h2>
+    
+    <div class="card-grid">
+        <% fasilitas.forEach(f => { %>
+            <div class="card">
+                <% 
+                    let imageName = f.nama_fasilitas.toLowerCase().replace('lapangan ', '').trim() + '.jpg';
+                %>
+                <img src="/images/<%= imageName %>" alt="<%= f.nama_fasilitas %>" style="width:100%; height:150px; object-fit:cover; border-radius: 8px;">
+                
+                <h3><%= f.nama_fasilitas.toUpperCase() %></h3>
+                <p><%= f.deskripsi %></p>
+                <div class="price">Rp <%= parseFloat(f.harga_per_jam).toLocaleString('id-ID') %> <small>/jam</small></div>
+                
+                <a href="/booking/<%= f.id %>" class="btn-booking">
+                    Pilih Lapangan
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+<%- include('partials/footer') %>
