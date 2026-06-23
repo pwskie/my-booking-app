@@ -1,33 +1,23 @@
-# my-booking-app
-Poin Penting untuk Pengerjaan Backend
-1. Koneksi & Struktur Database
 
-Export/Import Database: Teman Anda perlu menjalankan skema tabel (SQL) agar database-nya sama dengan milik Anda.
+Sportify - Sistem Booking Lapangan Olahraga
+Sportify adalah aplikasi berbasis web yang dirancang untuk memudahkan pengguna dalam memesan lapangan olahraga secara online. Aplikasi ini memungkinkan pengguna untuk memilih lapangan, melakukan booking, serta memantau status pesanan mereka, sementara admin dapat mengelola fasilitas dan menyetujui pesanan yang masuk.
 
-Koneksi: Memastikan config/db.js terhubung dengan benar ke database MySQL lokal di komputernya.
+- Fitur Utama
+Autentikasi User: Sistem login dan registrasi untuk memisahkan akses pengguna dan admin.
+Katalog Fasilitas: Menampilkan daftar lapangan yang tersedia lengkap dengan harga dan deskripsi.
+Booking Online: Proses pemesanan lapangan yang terintegrasi langsung ke database.
+Riwayat Booking: Pengguna dapat memantau status pesanan (pending/approved).
+Dashboard Admin: Admin dapat mengelola daftar lapangan, melihat data user, serta menyetujui atau menolak pesanan yang masuk.
+Jadwal Aktif: Halaman publik untuk melihat jadwal lapangan yang telah disetujui (status approved).
 
-2. Integrasi Data ke Halaman (Dynamic Content)
+- Teknologi yang Digunakan
+Backend: Node.js dengan framework Express.js
+Database: MySQL
+Template Engine: EJS (Embedded JavaScript)
+Session Management: express-session
+Styling: CSS (dapat disesuaikan)
 
-Data Fetching: Saat ini, data lapangan mungkin masih hardcoded. Teman Anda harus mengubahnya agar mengambil data dari tabel fasilitas menggunakan query SQL.
-
-Route Setup: Memastikan halaman / (Home) menampilkan data dari database secara dinamis.
-
-3. Sistem Keamanan & Autentikasi
-
-Login & Registrasi: Membuat sistem user agar orang bisa memiliki akun.
-
-Session Management: Menggunakan library seperti express-session agar website bisa "mengingat" user yang sedang login.
-
-Middleware: Membuat script pengecekan (middleware) agar halaman /booking hanya bisa diakses oleh user yang sudah login (jika belum, arahkan ke /login).
-
-4. Logika Booking (Inti Aplikasi)
-
-Form Booking: Membuat form untuk memilih tanggal dan jam.
-
-Validasi Jadwal: Logika untuk mengecek apakah lapangan sudah dipesan orang lain di jam tersebut (mencegah double booking).
-
-Penyimpanan Transaksi: Menyimpan data pesanan ke dalam tabel bookings setelah user menekan tombol "Bayar/Booking".
-
-5. Halaman Profil/Jadwal User
-
-Riwayat Booking: User harus bisa melihat lapangan apa saja yang sudah mereka pesan
+- Struktur Database (Tabel Utama)
+users: Menyimpan data akun (username, email, password, role).
+fasilitas: Menyimpan data lapangan (nama, harga, foto, deskripsi).
+transaksi: Menyimpan data booking (relasi ke users dan fasilitas, tanggal, waktu, dan status booking).
