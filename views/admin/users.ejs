@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar User | Sportify Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <h2>SPORTIFY ADMIN</h2>
+            <nav style="margin-top: 40px;">
+                <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="/admin/fasilitas"><i class="fas fa-dumbbell"></i> Kelola Lapangan</a>
+                <a href="/admin/users" style="color: #2e7d32;"><i class="fas fa-users"></i> Daftar User</a>
+                <a href="/logout" style="margin-top: 50px; color: #e57373;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header style="margin-bottom: 30px;">
+                <h1>Data Pengguna</h1>
+                <p style="color: #78909c;">Daftar seluruh user yang terdaftar dalam aplikasi.</p>
+            </header>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (users && users.length > 0) { %>
+                        <% users.forEach(u => { %>
+                        <tr>
+                            <td><%= u.id %></td>
+                            <td><%= u.username %></td>
+                            <td><%= u.email %></td>
+                            <td>
+                                <span style="padding: 4px 10px; border-radius: 10px; font-size: 0.8rem; background: <%= u.role === 'admin' ? '#e53935' : '#1e88e5' %>; color: white;">
+                                    <%= u.role.toUpperCase() %>
+                                </span>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="4" style="text-align: center;">Tidak ada data user.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

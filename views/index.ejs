@@ -12,22 +12,30 @@
     <h2 style="text-align: center; margin-bottom: 30px;">Pilih Lapangan untuk Booking</h2>
     
     <div class="card-grid">
-        <% fasilitas.forEach(f => { %>
-            <div class="card">
-                <% 
-                    let imageName = f.nama_fasilitas.toLowerCase().replace('lapangan ', '').trim() + '.jpg';
-                %>
-                <img src="/images/<%= imageName %>" alt="<%= f.nama_fasilitas %>" style="width:100%; height:150px; object-fit:cover; border-radius: 8px;">
-                
-                <h3><%= f.nama_fasilitas.toUpperCase() %></h3>
-                <p><%= f.deskripsi %></p>
-                <div class="price">Rp <%= parseFloat(f.harga_per_jam).toLocaleString('id-ID') %> <small>/jam</small></div>
-                
-                <a href="/booking/<%= f.id %>" class="btn-booking">
-                    Pilih Lapangan
-                </a>
-            </div>
-        <% }) %>
+        <% if (fasilitas && fasilitas.length > 0) { %>
+            <% fasilitas.forEach(f => { %>
+                <div class="card" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; padding: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <img src="/images/<%= f.foto %>" alt="<%= f.nama_fasilitas %>" 
+                         style="width:100%; height:200px; object-fit:cover;">
+                    
+                    <div style="padding: 15px;">
+                        <h3 style="margin: 0 0 10px 0;"><%= f.nama_fasilitas.toUpperCase() %></h3>
+                        
+                        <p style="font-size: 1.1rem; color: #2e7d32; font-weight: bold; margin-bottom: 15px;">
+                            Rp <%= (f.harga_per_jam ? parseFloat(f.harga_per_jam) : 0).toLocaleString('id-ID') %> 
+                            <small style="font-weight: normal; color: #78909c;">/jam</small>
+                        </p>
+                        
+                        <a href="/booking/<%= f.id %>" class="btn-booking" 
+                           style="display: block; text-align: center; background: #2e7d32; color: white; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: 600;">
+                           Pilih Lapangan
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p style="text-align: center; width: 100%;">Belum ada lapangan yang tersedia.</p>
+        <% } %>
     </div>
 </main>
 

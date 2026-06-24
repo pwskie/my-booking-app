@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="container" style="padding: 40px;">
+    <h2>Riwayat Booking Saya</h2>
+    <table border="1" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <tr style="background: #f4f4f4;">
+            <th style="padding: 10px;">Lapangan</th>
+            <th style="padding: 10px;">Tanggal</th>
+            <th style="padding: 10px;">Jam</th>
+            <th style="padding: 10px;">Status</th>
+        </tr>
+        <% if (riwayat && riwayat.length > 0) { %>
+            <% riwayat.forEach(r => { %>
+                <tr>
+                    <td style="padding: 10px;"><%= r.nama_fasilitas %></td>
+                    <td style="padding: 10px;"><%= new Date(r.tanggal).toLocaleDateString('id-ID') %></td>
+                    <td style="padding: 10px;"><%= r.jam_mulai.slice(0,5) %> - <%= r.jam_selesai.slice(0,5) %></td>
+                    <td style="padding: 10px;">
+                        <span style="padding: 5px 10px; border-radius: 5px; 
+                            background: <%= r.status == 'approved' ? '#c8e6c9' : '#fff9c4' %>;">
+                            <%= r.status.toUpperCase() %>
+                        </span>
+                    </td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <tr><td colspan="4" style="text-align: center; padding: 20px;">Belum ada riwayat booking.</td></tr>
+        <% } %>
+    </table>
+</div>
+
+<%- include('partials/footer') %>

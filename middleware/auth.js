@@ -1,10 +1,8 @@
-// File: middleware/auth.js
-
-function isAdmin(req, res, next) {
-    if (req.session.user && req.session.user.role === 'admin') {
-        return next(); // Lanjut ke halaman admin
+module.exports = {
+    isAuthenticated: (req, res, next) => {
+        if (req.session && req.session.userId) {
+            return next();
+        }
+        res.redirect('/login');
     }
-    res.redirect('/login'); // Bukan admin? Tendang ke login
-}
-
-module.exports = { isAdmin };
+};

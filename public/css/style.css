@@ -154,3 +154,82 @@ body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; }
     font-size: 0.8rem;
     color: #78909c;
 }
+
+
+/* --- Tambahan CSS Khusus Admin Dashboard --- */
+
+/* Wrapper admin untuk memastikan sidebar dan konten berdampingan */
+.admin-container { 
+    display: flex; 
+    min-height: 100vh; 
+    background: #f4f7f6; 
+}
+
+/* Sidebar gaya Sporty Dark */
+.sidebar { 
+    width: 260px; 
+    background: #263238; /* Senada dengan footer */
+    color: white; 
+    padding: 30px 20px; 
+}
+.sidebar h2 { 
+    color: #2e7d32; /* Hijau logo sportify */
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    text-transform: uppercase;
+}
+.sidebar nav a { 
+    color: #cfd8dc; 
+    text-decoration: none; 
+    display: block; 
+    padding: 12px 0; 
+    transition: 0.3s;
+}
+.sidebar nav a:hover { color: #fff; }
+
+/* Main Content area */
+.main-content { 
+    flex: 1; 
+    padding: 40px; 
+}
+
+/* Tabel gaya bersih dan profesional */
+.main-content table { 
+    width: 100%; 
+    background: white; 
+    border-collapse: collapse; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+.main-content th { 
+    background: #37474f; 
+    color: white; 
+    padding: 15px; 
+    text-align: left; 
+}
+.main-content td { 
+    padding: 15px; 
+    border-bottom: 1px solid #eee; 
+}
+
+/* Status Badges */
+.status-badge { 
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    text-transform: capitalize;
+    color: white;
+}
+/* Warna status otomatis */
+.status-pending { background: #ffa000; }
+.status-confirmed { background: #2e7d32; }
+
+/* Dropdown Aksi */
+.main-content select { 
+    padding: 6px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
