@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({
-    secret: 'kunci-rahasia-sportify',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -121,4 +122,5 @@ app.get('/', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log('Server running at http://localhost:3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
