@@ -47,7 +47,7 @@ fasilitas: Menyimpan data lapangan (nama, harga, foto, deskripsi).
 transaksi: Menyimpan data booking (relasi ke users dan fasilitas, tanggal, waktu, dan status booking).
 
 
-role 
-panji membuat halaman utama, daftar lapangan, booking dan admin
-faisal membuat halaman login dan register
+role :
+panji membuat halaman utama, daftar lapangan, booking dan admin |
+faisal membuat halaman login dan register |
 chilma membuat navbar dan footer
