@@ -1,53 +1,57 @@
+# Sportify - Sistem Booking Lapangan Olahraga
 
-Sportify - Sistem Booking Lapangan Olahraga
-Sportify adalah aplikasi berbasis web yang dirancang untuk memudahkan pengguna dalam memesan lapangan olahraga secara online. Aplikasi ini memungkinkan pengguna untuk memilih lapangan, melakukan booking, serta memantau status pesanan mereka, sementara admin dapat mengelola fasilitas dan menyetujui pesanan yang masuk.
+Sportify adalah aplikasi booking lapangan olahraga berbasis web yang memungkinkan pengguna memesan lapangan, melihat riwayat booking, dan admin mengelola fasilitas serta status booking.
 
- Fitur Utama
-Autentikasi User: Sistem login dan registrasi untuk memisahkan akses pengguna dan admin,yang dibuat oleh faisal
-Katalog Fasilitas: Menampilkan daftar lapangan yang tersedia lengkap dengan harga dan deskripsi, yang dibuat oleh chilma
-Booking Online: Proses pemesanan lapangan yang terintegrasi langsung ke database.
-Riwayat Booking: Pengguna dapat memantau status pesanan (pending/approved).
-Dashboard Admin: Admin dapat mengelola daftar lapangan, melihat data user, serta menyetujui atau menolak pesanan yang masuk, yang dibuat oleh panji
-Jadwal Aktif: Halaman publik untuk melihat jadwal lapangan yang telah disetujui (status approved).
+## Fitur utama
+- Login dan registrasi user/admin
+- Daftar fasilitas/lapangan dengan harga per jam
+- Proses booking online
+- Riwayat booking pengguna
+- Dashboard admin untuk mengelola booking dan fasilitas
+- Halaman jadwal yang menampilkan booking approved
 
- Teknologi yang Digunakan
-Backend: Node.js dengan framework Express.js
-Database: MySQL
-Template Engine: EJS (Embedded JavaScript)
-Session Management: express-session
-Styling: CSS (dapat disesuaikan)
+## Teknologi
+- Node.js + Express.js
+- MySQL
+- EJS
+- express-session
 
- Struktur Database (Tabel Utama)
-users: Menyimpan data akun (username, email, password, role).
-fasilitas: Menyimpan data lapangan (nama, harga, foto, deskripsi).
-transaksi: Menyimpan data booking (relasi ke users dan fasilitas, tanggal, waktu, dan status booking).
-# my-booking-app
-Sportify - Sistem Booking Lapangan Olahraga
-Sportify adalah aplikasi berbasis web yang dirancang untuk memudahkan pengguna dalam memesan lapangan olahraga secara online. Aplikasi ini memungkinkan pengguna untuk memilih lapangan, melakukan booking, serta memantau status pesanan mereka, sementara admin dapat mengelola fasilitas dan menyetujui pesanan yang masuk.
+## Persiapan lokal
+1. Install dependency:
+   ```bash
+   npm install
+   ```
+2. Salin file env contoh:
+   ```bash
+   copy .env.example .env
+   ```
+3. Sesuaikan konfigurasi database di .env
+4. Jalankan aplikasi:
+   ```bash
+   npm start
+   ```
 
--Fitur Utama
-Autentikasi User: Sistem login dan registrasi untuk memisahkan akses pengguna dan admin.
-Katalog Fasilitas: Menampilkan daftar lapangan yang tersedia lengkap dengan harga dan deskripsi.
-Booking Online: Proses pemesanan lapangan yang terintegrasi langsung ke database.
-Riwayat Booking: Pengguna dapat memantau status pesanan (pending/approved).
-Dashboard Admin: Admin dapat mengelola daftar lapangan, melihat data user, serta menyetujui atau menolak pesanan yang masuk.
-Jadwal Aktif: Halaman publik untuk melihat jadwal lapangan yang telah disetujui (status approved).
+## Variabel environment
+- DB_HOST
+- DB_USER
+- DB_PASSWORD
+- DB_NAME
+- SESSION_SECRET
+- PORT
+- NODE_ENV
 
--Teknologi yang Digunakan
-Backend: Node.js dengan framework Express.js
+## Deployment ke Vercel
+1. Push repo ke GitHub
+2. Buka Vercel, import project
+3. Set environment variables sesuai nilai database Anda
+4. Deploy
 
-Database: MySQL
-Template Engine: EJS (Embedded JavaScript)
-Session Management: express-session
-Styling: CSS (dapat disesuaikan)
+## Struktur database utama
+- users
+- fasilitas
+- transaksi
 
--Struktur Database (Tabel Utama)
-users: Menyimpan data akun (username, email, password, role).
-fasilitas: Menyimpan data lapangan (nama, harga, foto, deskripsi).
-transaksi: Menyimpan data booking (relasi ke users dan fasilitas, tanggal, waktu, dan status booking).
-
-
-role :
-panji membuat halaman utama, daftar lapangan, booking dan admin |
-faisal membuat halaman login dan register |
-chilma membuat navbar dan footer
+## Kontributor
+- Panji: halaman utama, daftar lapangan, booking, admin
+- Faisal: login dan register
+- Chilma: navbar dan footer

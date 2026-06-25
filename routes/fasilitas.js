@@ -11,7 +11,11 @@ const isAdmin = (req, res, next) => {
 // 1. Read: Tampilkan daftar
 router.get('/', isAdmin, (req, res) => {
     db.query('SELECT * FROM fasilitas', (err, results) => {
-        res.render('fasilitas', { fasilitas: results });
+        if (err) {
+            console.error('Error mengambil fasilitas:', err);
+            return res.render('fasilitas', { fasilitas: [] });
+        }
+        res.render('fasilitas', { fasilitas: results || [] });
     });
 });
 
@@ -28,6 +32,10 @@ router.post('/tambah', isAdmin, (req, res) => {
 // 3. Update: Halaman edit & Proses
 router.get('/edit/:id', isAdmin, (req, res) => {
     db.query('SELECT * FROM fasilitas WHERE id = ?', [req.params.id], (err, results) => {
+        if (err) {
+            console.error('Error mengambil fasilitas:', err);
+            return res.status(500).send('Gagal memuat data fasilitas');
+        }
         res.render('edit_fasilitas', { f: results[0] });
     });
 });

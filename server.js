@@ -17,9 +17,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'fallback-secret-sportify-123',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        sameSite: 'lax'
+    }
 }));
 
 // Middleware session untuk template
@@ -42,6 +47,8 @@ const isAdmin = (req, res, next) => {
 // --- ROUTES ---
 app.use('/admin', adminRoutes);
 app.use('/admin/fasilitas', isAdmin, fasilitasRoutes); // Rute CRUD Fasilitas (Terproteksi)
+
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 
 // --- RUTE AUTH (Login & Register) ---
 app.get('/login', (req, res) => res.render('login'));
@@ -100,7 +107,11 @@ app.get('/riwayat', (req, res) => {
                  WHERE t.user_id = ? ORDER BY t.id DESC`;
     
     db.query(sql, [req.session.userId], (err, results) => {
-        res.render('riwayat', { riwayat: results });
+        if (err) {
+            console.error('Database error on riwayat page:', err.message);
+            return res.render('riwayat', { riwayat: [] });
+        }
+        res.render('riwayat', { riwayat: results || [] });
     });
 });
 
@@ -112,15 +123,33 @@ app.get('/jadwal', (req, res) => {
                  WHERE t.status = 'approved' ORDER BY t.tanggal ASC`;
     
     db.query(sql, (err, results) => {
-        res.render('jadwal', { jadwal: results });
+        if (err) {
+            console.error('Database error on jadwal page:', err.message);
+            return res.render('jadwal', { jadwal: [] });
+        }
+        res.render('jadwal', { jadwal: results || [] });
     });
 });
 
 app.get('/', (req, res) => {
     db.query('SELECT * FROM fasilitas', (err, results) => {
-        res.render('index', { fasilitas: results });
+        if (err) {
+            console.error('Database error on home page:', err.message);
+            return res.render('index', { fasilitas: [] });
+        }
+        res.render('index', { fasilitas: results || [] });
     });
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err.message);
+    res.status(err.status || 500).send('Terjadi kesalahan pada server. Silakan coba lagi nanti.');
+});
+
+if (require.main === module) {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;

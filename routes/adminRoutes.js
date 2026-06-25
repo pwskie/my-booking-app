@@ -15,7 +15,6 @@ const isAdmin = (req, res, next) => {
 // routes/adminRoutes.js
 
 router.get('/dashboard', isAdmin, (req, res) => {
-    // Gunakan LEFT JOIN agar data tetap muncul meskipun user/fasilitas dihapus
     const sql = `
         SELECT t.*, u.username, f.nama_fasilitas 
         FROM transaksi t
@@ -27,13 +26,15 @@ router.get('/dashboard', isAdmin, (req, res) => {
     db.query(sql, (err, results) => {
         if (err) {
             console.error("Error database:", err);
-            return res.status(500).send("Gagal mengambil data booking");
+            return res.render('admin/dashboard', {
+                user: req.session.username || 'Admin',
+                bookings: []
+            });
         }
         
-        // Kirim data ke view admin/dashboard.ejs
         res.render('admin/dashboard', { 
-            user: req.session.username,
-            bookings: results || [] 
+            user: req.session.username || 'Admin',
+            bookings: results || []
         });
     });
 });
@@ -51,14 +52,22 @@ router.post('/update-status', isAdmin, (req, res) => {
 // Halaman Kelola Lapangan
 router.get('/fasilitas', isAdmin, (req, res) => {
     db.query('SELECT * FROM fasilitas', (err, results) => {
-        res.render('admin/fasilitas', { fasilitas: results });
+        if (err) {
+            console.error('Error mengambil fasilitas:', err);
+            return res.render('admin/fasilitas', { fasilitas: [] });
+        }
+        res.render('admin/fasilitas', { fasilitas: results || [] });
     });
 });
 
 // Halaman Daftar User
 router.get('/users', isAdmin, (req, res) => {
     db.query('SELECT * FROM users', (err, results) => {
-        res.render('admin/users', { users: results });
+        if (err) {
+            console.error('Error mengambil users:', err);
+            return res.render('admin/users', { users: [] });
+        }
+        res.render('admin/users', { users: results || [] });
     });
 });
 
