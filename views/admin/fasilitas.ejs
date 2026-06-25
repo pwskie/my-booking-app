@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelola Lapangan | Sportify</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Tambahan agar tombol terlihat seragam */
+        .btn-action { padding: 6px 12px; border-radius: 4px; text-decoration: none; color: white; display: inline-block; font-size: 14px; }
+        .btn-edit { background: #1976d2; }
+        .btn-hapus { background: #d32f2f; }
+        .btn-action:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <h2>SPORTIFY ADMIN</h2>
+            <nav style="margin-top: 40px;">
+                <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="/admin/fasilitas" style="color: #2e7d32;"><i class="fas fa-dumbbell"></i> Kelola Lapangan</a>
+                <a href="/admin/users"><i class="fas fa-users"></i> Daftar User</a>
+                <a href="/logout" style="margin-top: 50px; color: #e57373;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h1>Data Lapangan</h1>
+                <a href="/admin/fasilitas/tambah" style="background: #2e7d32; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                    <i class="fas fa-plus"></i> Tambah Lapangan
+                </a>
+            </header>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Nama Fasilitas</th><th>Harga</th><th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (fasilitas && fasilitas.length > 0) { %>
+                        <% fasilitas.forEach(f => { %>
+                        <tr>
+                            <td><%= f.id %></td>
+                            <td><%= f.nama_fasilitas %></td>
+                            <td>Rp <%= f.harga_per_jam ? parseFloat(f.harga_per_jam).toLocaleString('id-ID') : '0' %></td>
+                            <td>
+                                <a href="/admin/fasilitas/edit/<%= f.id %>" class="btn-action btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                
+                                <a href="/admin/fasilitas/hapus/<%= f.id %>" 
+                                   class="btn-action btn-hapus"
+                                   onclick="return confirm('Apakah Anda yakin ingin menghapus <%= f.nama_fasilitas %>? Tindakan ini tidak dapat dibatalkan.');">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="4" style="text-align: center;">Belum ada lapangan terdaftar.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

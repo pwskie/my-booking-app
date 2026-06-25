@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<div class="container" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2 style="text-align: center;">Login Pengguna</h2>
+    
+    <form action="/login" method="POST">
+        <div style="margin-bottom: 15px;">
+            <label>Email:</label><br>
+            <input type="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label>Password:</label><br>
+            <input type="password" name="password" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+    <p>Belum punya akun? <a href="/register">Daftar di sini</a></p>
+</div>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 10px; cursor: pointer;">Masuk</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

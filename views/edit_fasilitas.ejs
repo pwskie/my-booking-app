@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Fasilitas | Sportify</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <main class="main-content" style="max-width: 500px; margin: 50px auto;">
+            <h1>Edit Lapangan</h1>
+            <form action="/admin/fasilitas/update/<%= f.id %>" method="POST">
+                <div style="margin-bottom: 15px;">
+                    <label>Nama Fasilitas:</label><br>
+                    <input type="text" name="nama_fasilitas" value="<%= f.nama_fasilitas %>" 
+                           style="width: 100%; padding: 8px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Harga per Jam:</label><br>
+                    <input type="number" name="harga_per_jam" value="<%= f.harga_per_jam %>" 
+                           style="width: 100%; padding: 8px;" required>
+                </div>
+                <button type="submit" style="background: #2e7d32; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Simpan Perubahan
+                </button>
+                <a href="/admin/fasilitas" style="margin-left: 10px; color: #666;">Batal</a>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

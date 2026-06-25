@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify | Booking Lapangan Jadi Mudah</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-running"></i> SPORTIFY
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/">Daftar Lapangan</a></li>
+                <li><a href="/jadwal">Jadwal</a></li>
+
+                <% if (user) { %>
+                    <li><span style="color: white; margin-right: 10px;">Halo, <%= user %></span></li>
+                    <li><a href="/logout" class="nav-login" style="background-color: #e74c3c;">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login" class="nav-login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>

@@ -1,0 +1,235 @@
+/* --- Global Styles --- */
+body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; }
+
+/* Container Utama agar rapi */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Menghilangkan celah yang terlalu jauh */
+}
+
+/* Styling Banner Hero */
+.hero-container {
+    background: #546e7a; /* Warna latar belakang abu-abu */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Memastikan container daftar lapangan menempel rapi di bawahnya */
+.container {
+    margin-top: 40px; /* Jarak antara banner dan kartu */
+    padding-bottom: 50px;
+}
+
+/* --- Navbar (Menu) --- */
+.navbar {
+    background: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;             /* Mengaktifkan flexbox */
+    justify-content: space-between; /* Mendorong elemen ke sisi terjauh */
+    align-items: center;       /* Menyejajarkan secara vertikal */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;                 /* Jarak antar menu */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 600; 
+    transition: 0.3s;
+}
+
+.nav-menu a:hover { color: #2e7d32; }
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+/* --- Card Grid (Yang lama Anda) --- */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    height: 150px;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    margin-bottom: 15px;
+}
+.btn-booking {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/lapangan.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background: #263238; /* Warna dark yang lebih elegan */
+    color: #fff;
+    padding: 50px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom sama besar */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Merapikan link cepat */
+.footer-links {
+    display: flex;
+    flex-direction: column; /* Link tersusun ke bawah */
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #b0bec5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover { color: #fff; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #37474f;
+    font-size: 0.8rem;
+    color: #78909c;
+}
+
+
+/* --- Tambahan CSS Khusus Admin Dashboard --- */
+
+/* Wrapper admin untuk memastikan sidebar dan konten berdampingan */
+.admin-container { 
+    display: flex; 
+    min-height: 100vh; 
+    background: #f4f7f6; 
+}
+
+/* Sidebar gaya Sporty Dark */
+.sidebar { 
+    width: 260px; 
+    background: #263238; /* Senada dengan footer */
+    color: white; 
+    padding: 30px 20px; 
+}
+.sidebar h2 { 
+    color: #2e7d32; /* Hijau logo sportify */
+    font-size: 1.2rem; 
+    margin-bottom: 30px; 
+    text-transform: uppercase;
+}
+.sidebar nav a { 
+    color: #cfd8dc; 
+    text-decoration: none; 
+    display: block; 
+    padding: 12px 0; 
+    transition: 0.3s;
+}
+.sidebar nav a:hover { color: #fff; }
+
+/* Main Content area */
+.main-content { 
+    flex: 1; 
+    padding: 40px; 
+}
+
+/* Tabel gaya bersih dan profesional */
+.main-content table { 
+    width: 100%; 
+    background: white; 
+    border-collapse: collapse; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+.main-content th { 
+    background: #37474f; 
+    color: white; 
+    padding: 15px; 
+    text-align: left; 
+}
+.main-content td { 
+    padding: 15px; 
+    border-bottom: 1px solid #eee; 
+}
+
+/* Status Badges */
+.status-badge { 
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    text-transform: capitalize;
+    color: white;
+}
+/* Warna status otomatis */
+.status-pending { background: #ffa000; }
+.status-confirmed { background: #2e7d32; }
+
+/* Dropdown Aksi */
+.main-content select { 
+    padding: 6px; 
+    border-radius: 4px; 
+    border: 1px solid #ccc;
+    cursor: pointer;
+}

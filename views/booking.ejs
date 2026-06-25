@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<div class="container" style="padding: 40px;">
+    <h1>Booking <%= lapangan.nama_fasilitas %></h1>
+    <form action="/booking/proses" method="POST" style="max-width: 500px;">
+        <input type="hidden" name="facility_id" value="<%= lapangan.id %>">
+        
+        <label>Tanggal Booking:</label>
+        <input type="date" name="tanggal" required style="width: 100%; margin-bottom: 15px;">
+        
+        <label>Jam Mulai:</label>
+        <input type="time" name="jam_mulai" required style="width: 100%; margin-bottom: 15px;">
+        
+        <label>Jam Selesai:</label>
+        <input type="time" name="jam_selesai" required style="width: 100%; margin-bottom: 15px;">
+        
+        <button type="submit" style="background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+            Konfirmasi Booking
+        </button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
