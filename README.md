@@ -23,20 +23,7 @@ Sportify adalah aplikasi booking lapangan olahraga berbasis web yang memudahkan 
 - transaksi: menyimpan data booking pengguna
 
 ## Kontributor
-- Panji: halaman utama, daftar lapangan, booking, dan admin
-- Faisal: halaman login dan register
-- Chilma: navbar dan footer
+- Panji: halaman utama, daftar lapangan, booking, dan admin, halaman register, footer.
+- Faisal: halaman login
+- Chilma: footer
 
-## Cara Menjalankan Lokal
-1. Install dependency
-   ```bash
-   npm install
-   ```
-2. Jalankan aplikasi
-   ```bash
-   npm run dev
-   ```
-3. Buka browser ke
-   ```text
-   http://localhost:3000
-   ```
